@@ -1,0 +1,35 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+
+    <h2>TCloudG Test For Torre</h2>
+
+    <div style="padding: 13px; align:center;" *ngFor="let opportunity of opportunities" >
+        <mat-spinner *ngIf="opportunities.length === 0">Loading...</mat-spinner>
+    
+        <mat-card style="margin-top:10px; align:center;">
+            <mat-card-header>
+                <mat-card-title> {{opportunity.objective}}</mat-card-title>
+                <!--
+                    <mat-card-title>{{opportunity.professionalHeadline}}</mat-card-title>
+                <mat-card-subtitle> {{opportunity.compensations.currency}}{{opportunity.compensations.employee.amount}}
+                </mat-card-subtitle>
+                -->
+            </mat-card-header>
+            <mat-card-content>  
+                
+                <p> 
+                    <img  src="{{ opportunity.organizations[0].picture }}" style="clip-path: polygon(45% 1.33975%,46.5798% .60307%,48.26352% .15192%,50% 0,51.73648% .15192%,53.4202% .60307%,55% 1.33975%,89.64102% 21.33975%,91.06889% 22.33956%,92.30146% 23.57212%,93.30127% 25%,94.03794% 26.5798%,94.48909% 28.26352%,94.64102% 30%,94.64102% 70%,94.48909% 71.73648%,94.03794% 73.4202%,93.30127% 75%,92.30146% 76.42788%,91.06889% 77.66044%,89.64102% 78.66025%,55% 98.66025%,53.4202% 99.39693%,51.73648% 99.84808%,50% 100%,48.26352% 99.84808%,46.5798% 99.39693%,45% 98.66025%,10.35898% 78.66025%,8.93111% 77.66044%,7.69854% 76.42788%,6.69873% 75%,5.96206% 73.4202%,5.51091% 71.73648%,5.35898% 70%,5.35898% 30%,5.51091% 28.26352%,5.96206% 26.5798%,6.69873% 25%,7.69854% 23.57212%,8.93111% 22.33956%,10.35898% 21.33975%);height:15%; width: 15%;" />                             
+                </p>
+                <div>Organización: {{opportunity.organizations[0].name}}</div>                                    
+                <div>Type: {{opportunity.type}}</div>
+                <div *ngIf="opportunity.compensation != undefined">Compensation: {{opportunity.compensation.currenty}} {{opportunity.compensation.minAmount}}</div>
+                <div *ngIf="opportunity.skills.length>0">Skills:</div>
+                <div *ngFor="let skill of opportunity.skills">{{skill.name}} - {{skill.experience}} </div>
+                <div>Location: {{opportunity.locations}} </div>                  
+            </mat-card-content>
+        <mat-card-actions>
+            <button mat-button color="accent" (click)="openSnackBar('Signaled')">SIGNAL</button>
+        </mat-card-actions>
+        </mat-card>
+    </div>
+    
+</div>
